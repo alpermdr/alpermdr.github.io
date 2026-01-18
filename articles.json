@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1",
+        "title": "Modern Web Geliştirme Trendleri 2026",
+        "slug": "modern-web-gelistirme-trendleri-2026",
+        "excerpt": "2026 yılında web geliştirme dünyasında öne çıkan teknolojiler ve yaklaşımlar hakkında detaylı bir analiz.",
+        "date": "2026-01-15",
+        "readTime": "5 dk",
+        "category": "Web Development",
+        "tags": [
+            "JavaScript",
+            "React",
+            "Trends"
+        ],
+        "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+        "id": "2",
+        "title": "React vs Vue: Hangisini Seçmeli?",
+        "slug": "react-vs-vue-hangisini-secmeli",
+        "excerpt": "İki popüler frontend framework'ün karşılaştırması ve projeleriniz için hangisinin uygun olduğuna dair ipuçları.",
+        "date": "2026-01-10",
+        "readTime": "8 dk",
+        "category": "Frontend",
+        "tags": [
+            "React",
+            "Vue",
+            "Comparison"
+        ],
+        "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800"
+    },
+    {
+        "id": "3",
+        "title": "Python ile Machine Learning'e Giriş",
+        "slug": "python-ile-machine-learning-giris",
+        "excerpt": "Makine öğrenimine başlamak isteyenler için Python ile temel kavramlar ve ilk projeler.",
+        "date": "2026-01-05",
+        "readTime": "12 dk",
+        "category": "AI/ML",
+        "tags": [
+            "Python",
+            "Machine Learning",
+            "AI"
+        ],
+        "image": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=800"
+    }
+]
