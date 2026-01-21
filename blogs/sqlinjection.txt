@@ -26,9 +26,9 @@ UNION-Based SQLi: UNION operatörü kullanılarak birden fazla sorgunun sonucunu
 
         Saldırgan, kolon sayısını tespit ettikten sonra bir UNION SELECT payload'ı hazırlar. Bu sayede veritabanındaki helper (yardımcı) fonksiyonların sonuçlarını veya tablo içeriklerini direkt ekranda görebilir:
 
-https://alpermdar.github.io/assets/images/acuart_union_based.png
+https://alpermdr.github.io/assets/images/acuart_union_based.png
 
-Helper Fonksiyon Örneği: https://alpermdar.github.io/assets/images/acuart_union_based2.png
+Helper Fonksiyon Örneği: https://alpermdr.github.io/assets/images/acuart_union_based2.png
 
 Error-Based SQLi:
 
