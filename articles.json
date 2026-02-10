@@ -1,20 +1,21 @@
 [
-    
     {
-        "slug": "idor",
-        "title": "IDOR(Insecure direct object references)",
-        "excerpt":"IDOR zafiyeti hakkında",
-        "date": "2026-02-11",
-        "category": "Web Security",
-        "readTime": "8-10 dk",
-        "image": "/assets/images/idortumb.png",
-        
         "slug": "sqlinjection",
         "title": "SQL injection",
-        "excerpt":"SQL injection web zafiyeti basit ve sade bir dille anlatılmaya çalışılmıştır.",
+        "excerpt": "SQL injection web zafiyeti basit ve sade bir dille anlatılmaya çalışılmıştır.",
         "date": "2026-01-21",
         "category": "Web Security",
         "readTime": "8-10 dk",
         "image": "/assets/images/sqli.jpg"
+    },
+    {
+        "slug": "idor",
+        "title": "IDOR(Insecure direct object references)",
+        "excerpt": "IDOR zafiyeti hakkında",
+        "date": "2026-02-11",
+        "category": "Web Security",
+        "readTime": "8-10 dk",
+        "image": "/assets/images/idortumb.png"
     }
 ]
+
