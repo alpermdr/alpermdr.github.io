@@ -1,5 +1,3 @@
- Harika bir temel atmışsın! IDOR, web güvenliğinde "en basit ama en yıkıcı" açıkların başında gelir. Hazırladığın içeriği, teknik doğruluğunu bozmadan, Türkçesi daha akıcı ve profesyonel bir makale formatına getirdim.
-
 IDOR (Insecure Direct Object Reference) Nedir?
 
 
