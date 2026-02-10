@@ -27,21 +27,11 @@ Exploitation (Sömürü Aşaması)
 
 
 Bir senaryo üzerinden ilerleyelim: Sisteye giriş yaptığımızda bizi kullanıcı adı, şifre ve "secret" (kullanıcının adresi veya gizli bir bilgisi olarak düşünülebilir) alanı karşılıyor.
-
     https://alpermdr.github.io/assets/images/first.png
-
-
 Kullanıcının gizli bilgisini güncellemesi için hazırlanan "Change Secret" sayfasına gidiyoruz:
-
-
     https://alpermdr.github.io/assets/images/changesecret.png
-
-
 Aşağıdaki görseli incelediğimizde açığın temel mantığını daha net kavrayabiliyoruz:
-
-
     https://alpermdr.github.io/assets/images/idorbasit.png
-
 Buradaki mantığı kullanarak, Burp Suite gibi araçlar aracılığıyla istekteki id değerini değiştiriyoruz. Bu sayede, kendi yetkimiz dahilinde olmayan bir başka kullanıcının id değerini girerek onun gizli bilgilerini (secret) başarıyla güncelleyebiliyoruz.
 Nasıl Tespit Edilir?
 
@@ -62,5 +52,6 @@ IDOR zafiyetinden korunmak için uygulanabilecek temel güvenlik stratejileri ş
 
 
     Securing Critical Data (Kritik Verilerin Korunması): API kullanıcıya veri döndürürken sadece ihtiyaç duyulan alanları göndermelidir. Veritabanı tablosunun doğrudan JSON olarak kullanıcıya servis edilmesi gibi hatalardan kaçınılmalıdır. 
+
 
 
