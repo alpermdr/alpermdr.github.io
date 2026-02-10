@@ -7,9 +7,8 @@
         "date": "2026-02-11",
         "category": "Web Security",
         "readTime": "8-10 dk",
-        "image": "/assets/images/idortumb.png"
-    }
-    {
+        "image": "/assets/images/idortumb.png",
+        
         "slug": "sqlinjection",
         "title": "SQL injection",
         "excerpt":"SQL injection web zafiyeti basit ve sade bir dille anlatılmaya çalışılmıştır.",
