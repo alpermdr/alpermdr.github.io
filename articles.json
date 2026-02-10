@@ -1,4 +1,14 @@
 [
+    
+    {
+        "slug": "idor",
+        "title": "IDOR(Insecure direct object references)",
+        "excerpt":"IDOR zafiyeti hakkında",
+        "date": "2026-02-11",
+        "category": "Web Security",
+        "readTime": "8-10 dk",
+        "image": "/assets/images/idortumb.png"
+    }
     {
         "slug": "sqlinjection",
         "title": "SQL injection",
