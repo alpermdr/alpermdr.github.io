@@ -1,0 +1,50 @@
+Harika bir temel atmışsın! IDOR, web güvenliğinde "en basit ama en yıkıcı" açıkların başında gelir. Hazırladığın içeriği, teknik doğruluğunu bozmadan, Türkçesi daha akıcı ve profesyonel bir makale formatına getirdim.
+IDOR (Insecure Direct Object Reference) Nedir?
+
+Insecure Direct Object Reference (IDOR); bir kullanıcının, sistem üzerindeki dosyalara veya kendisine ait olmayan verilere erişebilmesine neden olan bir web güvenlik zafiyetidir. Genellikle API sistemlerinde, sunucunun gelen isteği gönderen kişinin o veriye erişim yetkisi olup olmadığını doğrulamadan veya eksik doğrulama yöntemleriyle veriyi servis etmesi sonucunda ortaya çıkar.
+IDOR Zafiyetinin Riskleri
+
+IDOR, sömürülmesi kolay olduğu kadar sonuçları bakımından da oldukça tehlikelidir:
+
+    Yetkisiz Veri Erişimi: Başka bir kullanıcıya ait kritik kişisel bilgilere erişilmesi.
+
+    Veri Manipülasyonu: Diğer kullanıcıların verilerinin izinsiz değiştirilmesi veya güncellenmesi.
+
+    Sistem Verilerine Müdahale: Özel sistem dosyalarına veya konfigürasyon verilerine erişim sağlanması.
+
+    Bilgi Toplama (Reconnaissance): İlk bakışta önemsiz görünse de, saldırının ilerleyen aşamalarında kullanılabilecek stratejik verilerin sızdırılması.
+
+Exploitation (Sömürü Aşaması)
+
+Bir senaryo üzerinden ilerleyelim: Sisteye giriş yaptığımızda bizi kullanıcı adı, şifre ve "secret" (kullanıcının adresi veya gizli bir bilgisi olarak düşünülebilir) alanı karşılıyor.
+
+    https://alpermdr.github.io/tree/main/assets/images/first.png
+
+Kullanıcının gizli bilgisini güncellemesi için hazırlanan "Change Secret" sayfasına gidiyoruz:
+
+    https://alpermdr.github.io/tree/main/assets/images/changesecret.png
+
+Aşağıdaki görseli incelediğimizde açığın temel mantığını daha net kavrayabiliyoruz:
+
+    https://alpermdr.github.io/tree/main/assets/images/idorbasit.png
+
+Buradaki mantığı kullanarak, Burp Suite gibi araçlar aracılığıyla istekteki id değerini değiştiriyoruz. Bu sayede, kendi yetkimiz dahilinde olmayan bir başka kullanıcının id değerini girerek onun gizli bilgilerini (secret) başarıyla güncelleyebiliyoruz.
+Nasıl Tespit Edilir?
+
+IDOR zafiyetini tespit etmek için yaygın olarak şu yöntemler kullanılır:
+
+    Manuel URL ve Parametre Analizi: URL üzerindeki veya form verilerindeki id, uid, account gibi parametrelerin elle değiştirilmesi.
+
+    Proxy Araçları: Burp Suite benzeri araçlarla isteklerin yakalanıp, parametreler üzerinde manipülasyon yapılarak sunucu yanıtlarının gözlemlenmesi.
+
+    Otomatik Tarama Araçları: Zafiyet tarayıcı yazılımlar kullanılarak parametre varyasyonlarının test edilmesi.
+
+Nasıl Korunuruz?
+
+IDOR zafiyetinden korunmak için uygulanabilecek temel güvenlik stratejileri şunlardır:
+
+    Object Level Authorization (Nesne Seviyesinde Yetkilendirme): Sunucudan bir nesne veya veri istendiğinde, kullanıcının o veriye erişim yetkisi her seferinde doğrulanmalıdır. Sadece "oturum açmış olmak" yetmez; "bu verinin sahibi mi?" sorusu kontrol edilmelidir.
+
+    Indirect Reference (Dolaylı Referans Kullanımı): Gerçek veritabanı ID değerleri yerine, kullanıcıya özel geçici anahtarlar veya tahmin edilmesi imkansız, karmaşık UUID (Universally Unique Identifier) değerleri kullanılmalıdır.
+
+    Securing Critical Data (Kritik Verilerin Korunması): API kullanıcıya veri döndürürken sadece ihtiyaç duyulan a
